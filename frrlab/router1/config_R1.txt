@@ -1,0 +1,53 @@
+router1# sh running-config 
+Building configuration...
+
+Current configuration:
+!
+frr version 7.5.1_git
+frr defaults traditional
+hostname router1
+no ipv6 forwarding
+!
+interface eth1
+ description TO-R2
+ ip address 192.168.1.1/24
+ ip router isis 1 
+ isis circuit-type level-2-only
+ isis network point-to-point
+!
+interface eth2
+ description TO-R3
+ ip address 192.168.2.1/24
+ ip router isis 1 
+ isis circuit-type level-2-only
+ isis network point-to-point
+ isis passive
+!
+interface eth3
+ description TO-PC1
+ ip address 192.168.11.1/24
+ ip router isis 1 
+ isis circuit-type level-2-only
+ isis passive
+!
+interface lo
+ ip address 10.10.10.1/32
+!
+interface l0
+ ip router isis 1 
+ isis circuit-type level-2-only
+ isis passive
+!
+router isis 1 
+ is-type level-2-only
+ net 49.0001.0100.1001.0001.00
+!
+router isis 14413 
+ net 49.0001.4413.0100.1001.0001.00
+ topology ipv6-unicast
+!
+line vty
+!
+end
+router1# 
+

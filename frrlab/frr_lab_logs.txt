@@ -1,0 +1,606 @@
+rocky@rocky-Ubuntu:~$ 
+rocky@rocky-Ubuntu:~$ bash -c "$(curl -sL https://get-clab.srlinux.dev)"
+Downloading https://github.com/srl-labs/containerlab/releases/download/v0.16.2/containerlab_0.16.2_linux_amd64.deb
+Preparing to install containerlab 0.16.2 from package
+Selecting previously unselected package containerlab.
+(Reading database ... 163378 files and directories currently installed.)
+Preparing to unpack .../containerlab_0.16.2_linux_amd64.deb ...
+Unpacking containerlab (0.16.2) ...
+Setting up containerlab (0.16.2) ...
+
+                           _                   _       _     
+                 _        (_)                 | |     | |    
+ ____ ___  ____ | |_  ____ _ ____   ____  ____| | ____| | _  
+/ ___) _ \|  _ \|  _)/ _  | |  _ \ / _  )/ ___) |/ _  | || \ 
+( (__| |_|| | | | |_( ( | | | | | ( (/ /| |   | ( ( | | |_) )
+\____)___/|_| |_|\___)_||_|_|_| |_|\____)_|   |_|\_||_|____/ 
+
+    version: 0.16.2
+     commit: 3087f30
+       date: 2021-08-11T06:22:45Z
+     source: https://github.com/srl-labs/containerlab
+ rel. notes: https://containerlab.srlinux.dev/rn/0.16/#0162
+rocky@rocky-Ubuntu:~$ 
+rocky@rocky-Ubuntu:~$ 
+rocky@rocky-Ubuntu:~$ 
+rocky@rocky-Ubuntu:~$ 
+rocky@rocky-Ubuntu:~$ 
+rocky@rocky-Ubuntu:~$ 
+rocky@rocky-Ubuntu:~$ 
+rocky@rocky-Ubuntu:~$ pwd
+/home/rocky
+rocky@rocky-Ubuntu:~$ 
+rocky@rocky-Ubuntu:~$ 
+rocky@rocky-Ubuntu:~$ 
+rocky@rocky-Ubuntu:~$ 
+rocky@rocky-Ubuntu:~$ mkdir -p ~/Documents/frrlab 
+rocky@rocky-Ubuntu:~$ 
+rocky@rocky-Ubuntu:~$ 
+rocky@rocky-Ubuntu:~$ 
+rocky@rocky-Ubuntu:~$ cd ~/Documents/frrlab
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ vi frrlab.yml
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ cat frrlab.yml frrlab.yml 
+name: frrlab
+
+topology:
+  nodes:
+    router1:
+      kind: linux
+      image: frrouting/frr:v7.5.1
+      binds:
+        - router1/daemons:/etc/frr/daemons
+    router2:
+      kind: linux
+      image: frrouting/frr:v7.5.1
+      binds:
+        - router2/daemons:/etc/frr/daemons
+    PC1:
+      kind: linux
+      image: praqma/network-multitool:latest
+    PC2:
+      kind: linux
+      image: praqma/network-multitool:latest
+
+  links:
+    - endpoints: ["router1:eth1", "router2:eth1"]
+    - endpoints: ["PC1:eth1", "router1:eth3"]
+    - endpoints: ["PC2:eth1", "router2:eth3"]
+
+
+
+
+
+name: frrlab
+
+topology:
+  nodes:
+    router1:
+      kind: linux
+      image: frrouting/frr:v7.5.1
+      binds:
+        - router1/daemons:/etc/frr/daemons
+    router2:
+      kind: linux
+      image: frrouting/frr:v7.5.1
+      binds:
+        - router2/daemons:/etc/frr/daemons
+    PC1:
+      kind: linux
+      image: praqma/network-multitool:latest
+    PC2:
+      kind: linux
+      image: praqma/network-multitool:latest
+
+  links:
+    - endpoints: ["router1:eth1", "router2:eth1"]
+    - endpoints: ["PC1:eth1", "router1:eth3"]
+    - endpoints: ["PC2:eth1", "router2:eth3"]
+
+
+
+
+
+rocky@rocky-Ubuntu:~/Documents/frrlab$ cat frrlab.yml 
+name: frrlab
+
+topology:
+  nodes:
+    router1:
+      kind: linux
+      image: frrouting/frr:v7.5.1
+      binds:
+        - router1/daemons:/etc/frr/daemons
+    router2:
+      kind: linux
+      image: frrouting/frr:v7.5.1
+      binds:
+        - router2/daemons:/etc/frr/daemons
+    PC1:
+      kind: linux
+      image: praqma/network-multitool:latest
+    PC2:
+      kind: linux
+      image: praqma/network-multitool:latest
+
+  links:
+    - endpoints: ["router1:eth1", "router2:eth1"]
+    - endpoints: ["PC1:eth1", "router1:eth3"]
+    - endpoints: ["PC2:eth1", "router2:eth3"]
+
+
+
+
+
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ mkdir router1
+rocky@rocky-Ubuntu:~/Documents/frrlab$ mkdir router2
+rocky@rocky-Ubuntu:~/Documents/frrlab$ mkdir router3
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$  vi router1/daemons
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ cp router1/daemons router2/daemons
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$  sudo docker login
+Login with your Docker ID to push and pull images from Docker Hub. If you don't have a Docker ID, head over to https://hub.docker.com to create one.
+Username: pawanshirke
+Password: 
+WARNING! Your password will be stored unencrypted in /home/rocky/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ sudo clab deploy --topo frrlab.yml
+INFO[0000] Parsing & checking topology file: frrlab.yml 
+INFO[0000] Pulling docker.io/praqma/network-multitool:latest Docker image 
+INFO[0065] Done pulling docker.io/praqma/network-multitool:latest 
+INFO[0065] Pulling docker.io/frrouting/frr:v7.5.1 Docker image 
+INFO[0170] Done pulling docker.io/frrouting/frr:v7.5.1  
+INFO[0170] Creating lab directory: /home/rocky/Documents/frrlab/clab-frrlab 
+INFO[0170] Creating docker network: Name='clab', IPv4Subnet='172.20.20.0/24', IPv6Subnet='2001:172:20:20::/64', MTU='1500' 
+INFO[0170] Creating container: PC1                      
+INFO[0170] Creating container: router2                  
+INFO[0170] Creating container: PC2                      
+INFO[0170] Creating container: router1                  
+INFO[0174] Creating virtual wire: PC2:eth1 <--> router2:eth3 
+INFO[0174] Creating virtual wire: PC1:eth1 <--> router1:eth3 
+INFO[0174] Creating virtual wire: router1:eth1 <--> router2:eth1 
+INFO[0175] Adding containerlab host entries to /etc/hosts file 
++---+---------------------+--------------+---------------------------------+-------+-------+---------+----------------+----------------------+
+| # |        Name         | Container ID |              Image              | Kind  | Group |  State  |  IPv4 Address  |     IPv6 Address     |
++---+---------------------+--------------+---------------------------------+-------+-------+---------+----------------+----------------------+
+| 1 | clab-frrlab-PC1     | 056c0dd76db7 | praqma/network-multitool:latest | linux |       | running | 172.20.20.3/24 | 2001:172:20:20::3/64 |
+| 2 | clab-frrlab-PC2     | bc41c5aec2fb | praqma/network-multitool:latest | linux |       | running | 172.20.20.2/24 | 2001:172:20:20::2/64 |
+| 3 | clab-frrlab-router1 | 5dfbdeaf7c44 | frrouting/frr:v7.5.1            | linux |       | running | 172.20.20.5/24 | 2001:172:20:20::5/64 |
+| 4 | clab-frrlab-router2 | 852139ca1774 | frrouting/frr:v7.5.1            | linux |       | running | 172.20.20.4/24 | 2001:172:20:20::4/64 |
++---+---------------------+--------------+---------------------------------+-------+-------+---------+----------------+----------------------+
+rocky@rocky-Ubuntu:~/Documents/frrlab$ sudo docker exec -it clab-frrlab-PC1 /bin/ash
+/ # 
+/ # 
+/ # 
+/ # 
+/ # ip addr add 192.168.11.2/24 dev eth1
+/ # ip route add 192.168.0.0/16 via 192.168.11.1 dev eth1
+/ # ip route add 10.10.10.0/24 via 192.168.11.1 dev eth1
+/ # exit
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ sudo docker exec -it clab-frrlab-PC2 /bin/ash
+/ # ip addr add 192.168.12.2/24 dev eth1
+/ # ip route add 192.168.0.0/16 via 192.168.12.1 dev eth1
+/ # ip route add 10.10.10.0/24 via 192.168.12.1 dev eth1
+/ # exit
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ sudo docker exec -it clab-frrlab-router1 vtysh
+% Can't open configuration file /etc/frr/vtysh.conf due to 'No such file or directory'.
+
+Hello, this is FRRouting (version 7.5.1_git).
+Copyright 1996-2005 Kunihiro Ishiguro, et al.
+
+router1# 
+router1# 
+router1# 
+router1# sh version 
+FRRouting 7.5.1_git (router1).
+Copyright 1996-2005 Kunihiro Ishiguro, et al.
+configured with:
+    '--prefix=/usr' '--sbindir=/usr/lib/frr' '--sysconfdir=/etc/frr' '--libdir=/usr/lib' '--localstatedir=/var/run/frr' '--enable-systemd=no' '--enable-rpki' '--enable-vtysh' '--enable-multipath=64' '--enable-vty-group=frrvty' '--enable-user=frr' '--enable-group=frr' 'CC=gcc' 'CXX=g++'
+router1# 
+router1# 
+router1# sh 
+babel             debugging         interface         logging           nexthop-group     router-id         version           work-queues
+bfd               dmvpn             ip                mac               openfabric        rpki              vnc               yang
+bgp               error             ipv6              memory            pbr               running-config    vrf               zebra
+bmp               evpn              isis              modules           route-map         startup-config    vrrp              
+daemons           fpm               l2vpn             mpls              route-map-unused  thread            watchfrr          
+router1#    
+router1# conf t
+router1(config)# 
+router1(config)# 
+router1(config)# 
+router1(config)# service integrated-vtysh-config
+router1(config)# interface eth1
+router1(config-if)#  ip address 192.168.1.1/24
+router1(config-if)#  exit
+router1(config)# interface eth2
+router1(config-if)#  ip address 192.168.2.1/24
+router1(config-if)#  exit
+router1(config)# interface eth3
+router1(config-if)#  ip address 192.168.11.1/24
+router1(config-if)#  exit
+router1(config)# interface lo
+router1(config-if)#  ip address 10.10.10.1/32
+router1(config-if)#  exit
+router1(config)# exit
+router1# write
+Note: this version of vtysh never writes vtysh.conf
+% Can't open configuration file /etc/frr/vtysh.conf due to 'No such file or directory'.
+Building Configuration...
+Integrated configuration saved to /etc/frr/frr.conf
+[OK]
+router1# exit
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$  sudo docker exec -it clab-frrlab-router2 vtysh
+% Can't open configuration file /etc/frr/vtysh.conf due to 'No such file or directory'.
+
+Hello, this is FRRouting (version 7.5.1_git).
+Copyright 1996-2005 Kunihiro Ishiguro, et al.
+
+router2# 
+router2# 
+router2# 
+router2# configure terminal 
+router2(config)# service integrated-vtysh-config
+router2(config)# interface eth1
+router2(config-if)#  ip address 192.168.1.2/24
+router2(config-if)#  exit
+router2(config)# interface eth2
+router2(config-if)#  ip address 192.168.3.1/24
+router2(config-if)#  exit
+router2(config)# interface eth3
+router2(config-if)#  ip address 192.168.12.1/24
+router2(config-if)#  exit
+router2(config)# interface lo
+router2(config-if)#  ip address 10.10.10.2/32
+router2(config-if)#  exit
+router2(config)# exit
+router2# write
+Note: this version of vtysh never writes vtysh.conf
+% Can't open configuration file /etc/frr/vtysh.conf due to 'No such file or directory'.
+Building Configuration...
+Integrated configuration saved to /etc/frr/frr.conf
+[OK]
+router2# exit
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ sudo docker exec -it clab-frrlab-PC1 /bin/ash
+/ # 
+/ # 
+/ # ping -c 10 192.168.11.1
+PING 192.168.11.1 (192.168.11.1) 56(84) bytes of data.
+64 bytes from 192.168.11.1: icmp_seq=1 ttl=64 time=0.170 ms
+^C
+--- 192.168.11.1 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.170/0.170/0.170/0.000 ms
+/ # ^C
+/ # ^C
+/ # 
+/ # 
+/ # ping -c 10 192.168.12.2
+PING 192.168.12.2 (192.168.12.2) 56(84) bytes of data.
+^C
+--- 192.168.12.2 ping statistics ---
+4 packets transmitted, 0 received, 100% packet loss, time 3058ms
+
+/ # ^C
+/ # ^C
+/ # exi
+/bin/ash: exi: not found
+/ # 
+/ # exit
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ sudo docker exec -it clab-frrlab-router1 vtysh
+% Can't open configuration file /etc/frr/vtysh.conf due to 'No such file or directory'.
+
+Hello, this is FRRouting (version 7.5.1_git).
+Copyright 1996-2005 Kunihiro Ishiguro, et al.
+
+router1# 
+router1# 
+router1# 
+router1# 
+router1# 
+router1# 
+router1# 
+router1# conf t
+router1(config)# 
+router1(config)# 
+router1(config)# 
+router1(config)# router ospf
+router1(config-router)#  passive-interface eth3
+router1(config-router)#  passive-interface lo
+router1(config-router)#  network 192.168.1.0/24 area 0.0.0.0
+router1(config-router)#  network 192.168.2.0/24 area 0.0.0.0
+router1(config-router)#  network 192.168.11.0/24 area 0.0.0.0
+router1(config-router)#  exit
+router1(config)# exit
+router1# write
+Note: this version of vtysh never writes vtysh.conf
+% Can't open configuration file /etc/frr/vtysh.conf due to 'No such file or directory'.
+Building Configuration...
+Integrated configuration saved to /etc/frr/frr.conf
+[OK]
+router1# exit
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$  sudo docker exec -it clab-frrlab-router2 vtysh
+% Can't open configuration file /etc/frr/vtysh.conf due to 'No such file or directory'.
+
+Hello, this is FRRouting (version 7.5.1_git).
+Copyright 1996-2005 Kunihiro Ishiguro, et al.
+
+router2# 
+router2# 
+router2# 
+router2# configure terminal 
+router2(config)# router ospf
+router2(config-router)#  passive-interface eth3
+router2(config-router)#  network 192.168.1.0/24 area 0.0.0.0
+router2(config-router)#  network 192.168.3.0/24 area 0.0.0.0
+router2(config-router)#  network 192.168.12.0/24 area 0.0.0.0
+router2(config-router)#  exit
+router2(config)# exit
+router2# write
+Note: this version of vtysh never writes vtysh.conf
+% Can't open configuration file /etc/frr/vtysh.conf due to 'No such file or directory'.
+Building Configuration...
+Integrated configuration saved to /etc/frr/frr.conf
+[OK]
+router2# exit
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ sudo docker exec clab-frrlab-PC1 ping -c1 192.168.12.2
+PING 192.168.12.2 (192.168.12.2) 56(84) bytes of data.
+
+--- 192.168.12.2 ping statistics ---
+1 packets transmitted, 0 received, 100% packet loss, time 0ms
+
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ sudo docker exec clab-frrlab-PC1 ping -c2 192.168.12.2
+PING 192.168.12.2 (192.168.12.2) 56(84) bytes of data.
+^C
+rocky@rocky-Ubuntu:~/Documents/frrlab$ ^C
+rocky@rocky-Ubuntu:~/Documents/frrlab$ sudo docker exec clab-frrlab-PC1 ping -c2 192.168.12.1
+PING 192.168.12.1 (192.168.12.1) 56(84) bytes of data.
+^C
+rocky@rocky-Ubuntu:~/Documents/frrlab$ ^C
+rocky@rocky-Ubuntu:~/Documents/frrlab$ ^C
+rocky@rocky-Ubuntu:~/Documents/frrlab$ sudo docker exec clab-frrlab-PC1 ping -c2 192.168.11.1
+PING 192.168.11.1 (192.168.11.1) 56(84) bytes of data.
+64 bytes from 192.168.11.1: icmp_seq=1 ttl=64 time=0.045 ms
+64 bytes from 192.168.11.1: icmp_seq=2 ttl=64 time=0.087 ms
+
+--- 192.168.11.1 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1015ms
+rtt min/avg/max/mdev = 0.045/0.066/0.087/0.021 ms
+rocky@rocky-Ubuntu:~/Documents/frrlab$ ^C
+rocky@rocky-Ubuntu:~/Documents/frrlab$ sudo docker exec clab-frrlab-PC1 ping -c2 192.168.11.2
+PING 192.168.11.2 (192.168.11.2) 56(84) bytes of data.
+64 bytes from 192.168.11.2: icmp_seq=1 ttl=64 time=0.048 ms
+64 bytes from 192.168.11.2: icmp_seq=2 ttl=64 time=0.050 ms
+
+--- 192.168.11.2 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1010ms
+rtt min/avg/max/mdev = 0.048/0.049/0.050/0.001 ms
+rocky@rocky-Ubuntu:~/Documents/frrlab$ sudo docker exec clab-frrlab-PC1 ping -c2 192.168.12.2
+PING 192.168.12.2 (192.168.12.2) 56(84) bytes of data.
+64 bytes from 192.168.12.2: icmp_seq=1 ttl=62 time=0.116 ms
+64 bytes from 192.168.12.2: icmp_seq=2 ttl=62 time=0.093 ms
+
+--- 192.168.12.2 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1021ms
+rtt min/avg/max/mdev = 0.093/0.104/0.116/0.011 ms
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ sudo docker exec clab-frrlab-PC1 ping -c2 192.168.12.1
+PING 192.168.12.1 (192.168.12.1) 56(84) bytes of data.
+64 bytes from 192.168.12.1: icmp_seq=1 ttl=63 time=0.055 ms
+64 bytes from 192.168.12.1: icmp_seq=2 ttl=63 time=0.083 ms
+
+--- 192.168.12.1 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1010ms
+rtt min/avg/max/mdev = 0.055/0.069/0.083/0.014 ms
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ sudo docker exec -it clab-frrlab-router2 vtysh
+% Can't open configuration file /etc/frr/vtysh.conf due to 'No such file or directory'.
+
+Hello, this is FRRouting (version 7.5.1_git).
+Copyright 1996-2005 Kunihiro Ishiguro, et al.
+
+router2# 
+router2# 
+router2# sh ip route
+Codes: K - kernel route, C - connected, S - static, R - RIP,
+       O - OSPF, I - IS-IS, B - BGP, E - EIGRP, N - NHRP,
+       T - Table, v - VNC, V - VNC-Direct, A - Babel, D - SHARP,
+       F - PBR, f - OpenFabric,
+       > - selected route, * - FIB route, q - queued, r - rejected, b - backup
+
+K>* 0.0.0.0/0 [0/0] via 172.20.20.1, eth0, 00:08:59
+C>* 10.10.10.2/32 is directly connected, lo, 00:03:58
+C>* 172.20.20.0/24 is directly connected, eth0, 00:08:59
+O   192.168.1.0/24 [110/10] is directly connected, eth1, weight 1, 00:01:42
+C>* 192.168.1.0/24 is directly connected, eth1, 00:03:58
+O>* 192.168.11.0/24 [110/20] via 192.168.1.1, eth1, weight 1, 00:00:52
+O   192.168.12.0/24 [110/10] is directly connected, eth3, weight 1, 00:01:42
+C>* 192.168.12.0/24 is directly connected, eth3, 00:03:58
+router2# 
+router2# 
+router2# sh ip ospf neighbor 
+
+Neighbor ID     Pri State           Dead Time Address         Interface                        RXmtL RqstL DBsmL
+10.10.10.1        1 Full/Backup       38.165s 192.168.1.1     eth1:192.168.1.2                     0     0     0
+
+router2# sh ip ospf database 
+
+       OSPF Router with ID (10.10.10.2)
+
+                Router Link States (Area 0.0.0.0)
+
+Link ID         ADV Router      Age  Seq#       CkSum  Link count
+10.10.10.1      10.10.10.1        88 0x80000006 0xeeb1 2
+10.10.10.2      10.10.10.2        88 0x80000005 0x0499 2
+
+                Net Link States (Area 0.0.0.0)
+
+Link ID         ADV Router      Age  Seq#       CkSum
+192.168.1.2     10.10.10.2        88 0x80000001 0x345a
+
+
+router2# 
+router2# 
+router2# sh ip ospf 
+  <cr>            
+  (1-65535)       Instance ID
+  border-routers  Show all the ABR's and ASBR's
+  database        Database summary
+  interface       Interface information
+  json            JavaScript Object Notation
+  mpls-te         MPLS-TE information
+  neighbor        Neighbor list
+  route           OSPF routing table
+  router-info     Router Information
+  vrf             Specify the VRF
+  vrfs            Show OSPF VRFs 
+router2# show     
+  babel             Babel information
+  bfd               Bidirection Forwarding Detection
+  bgp               BGP information
+  bmp               BGP Monitoring Protocol
+  daemons           Show list of running daemons
+  debugging         Debugging functions
+  dmvpn             DMVPN information
+  error             Information on errors
+  evpn              EVPN
+  fpm               Forwarding Plane Manager configuration
+  interface         Interface status and configuration
+  ip                IP information
+  ipv6              IPv6 information
+  isis              IS-IS routing protocol
+  l2vpn             Show information about Layer2 VPN
+  logging           Show current logging configuration
+  mac               mac access lists
+  memory            Memory statistics
+  modules           Loaded modules
+  mpls              MPLS information
+  nexthop-group     Show Nexthop Groups
+  openfabric        OpenFabric routing protocol
+  pbr               Policy Based Routing
+  route-map         route-map
+  route-map-unused  unused route-map information
+  router-id         Show the configured router-id
+  rpki              Control rpki specific settings
+  running-config    Current operating configuration
+  startup-config    Contents of startup configuration
+  thread            Thread information
+  version           Displays zebra version
+  vnc               VNC information
+  vrf               VRF
+  vrrp              Virtual Router Redundancy Protocol
+  watchfrr          watchfrr information
+  work-queues       Work Queue information
+  yang              YANG information
+  zebra             Zebra information
+router2# show  interface 
+  <cr>           
+  IFNAME         Interface name
+     eth0 eth1 eth2 eth3 lo 
+  brief          Interface status and configuration summary
+  description    Interface description
+  nexthop-group  Show Nexthop Groups
+  vrf            Specify the VRF
+router2# show  interface brief 
+Interface       Status  VRF             Addresses
+---------       ------  ---             ---------
+eth0            up      default         172.20.20.4/24
+                                        + 2001:172:20:20::4/64
+eth1            up      default         192.168.1.2/24
+eth2            down    default         
+eth3            up      default         192.168.12.1/24
+lo              up      default         10.10.10.2/32
+
+router2# 
+router2# 
+router2# 
+router2# write 
+Note: this version of vtysh never writes vtysh.conf
+% Can't open configuration file /etc/frr/vtysh.conf due to 'No such file or directory'.
+Building Configuration...
+Integrated configuration saved to /etc/frr/frr.conf
+[OK]
+router2# exit
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ sudo containerlab inspect --name frrlab
++---+---------------------+--------------+---------------------------------+-------+-------+---------+----------------+----------------------+
+| # |        Name         | Container ID |              Image              | Kind  | Group |  State  |  IPv4 Address  |     IPv6 Address     |
++---+---------------------+--------------+---------------------------------+-------+-------+---------+----------------+----------------------+
+| 1 | clab-frrlab-PC1     | 056c0dd76db7 | praqma/network-multitool:latest | linux |       | running | 172.20.20.3/24 | 2001:172:20:20::3/64 |
+| 2 | clab-frrlab-PC2     | bc41c5aec2fb | praqma/network-multitool:latest | linux |       | running | 172.20.20.2/24 | 2001:172:20:20::2/64 |
+| 3 | clab-frrlab-router1 | 5dfbdeaf7c44 | frrouting/frr:v7.5.1            | linux |       | running | 172.20.20.5/24 | 2001:172:20:20::5/64 |
+| 4 | clab-frrlab-router2 | 852139ca1774 | frrouting/frr:v7.5.1            | linux |       | running | 172.20.20.4/24 | 2001:172:20:20::4/64 |
++---+---------------------+--------------+---------------------------------+-------+-------+---------+----------------+----------------------+
+rocky@rocky-Ubuntu:~/Documents/frrlab$ sudo containerlab graph --topo frrlab.yml
+INFO[0000] Parsing & checking topology file: frrlab.yml 
+INFO[0000] Listening on :50080...                       
+^C
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+rocky@rocky-Ubuntu:~/Documents/frrlab$ sudo containerlab graph --topo frrlab.yml
+INFO[0000] Parsing & checking topology file: frrlab.yml 
+INFO[0000] Listening on :50080...                       
+^A^C
+rocky@rocky-Ubuntu:~/Documents/frrlab$ 
+
